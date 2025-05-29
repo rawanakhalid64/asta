@@ -1,6 +1,16 @@
 "use client";
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, A11y } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation'; // If you use Swiper's built-in navigation styles (we are using custom)
+
+// Chevron icons were not used in the original category slider arrows,
+// but if you wanted to use them with Swiper, you could.
+// For now, we'll keep the original CSS triangle arrows.
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Categories list
 const categories = [
@@ -9,11 +19,14 @@ const categories = [
   "إدارة المعلومات",
   "الأمن السيبراني",
   "تطوير الويب",
+  "تجربة",
+  "تجربة",
+  "تجربة",
 ];
 
-// Category details
-const categoryContent = {
-  "الذكاء الاصطناعي": {
+// Category details (remains the same)
+const categoryContent = [
+  {
     title: "مسار الذكاء الاصطناعي",
     description: "تعلم أساسيات الذكاء الاصطناعي وتطبيقاته المتقدمة",
     image:
@@ -21,7 +34,7 @@ const categoryContent = {
     englishTitle: "ARTIFICIAL INTELLIGENCE",
     bgGradient: "from-blue-600 to-purple-600",
   },
-  "تحليل البيانات": {
+  {
     title: "مسار تحليل البيانات وتعلم الآلة",
     description:
       "اكتسب المهارات اللازمة لتحويل البيانات إلى رؤية قوية وقرارات ذكية",
@@ -30,7 +43,7 @@ const categoryContent = {
     englishTitle: "DATA ANALYSIS",
     bgGradient: "from-teal-500 to-blue-600",
   },
-  "إدارة المعلومات": {
+  {
     title: "مسار إدارة المعلومات",
     description: "تعلم كيفية إدارة البيانات والمعلومات بكفاءة",
     image:
@@ -38,7 +51,7 @@ const categoryContent = {
     englishTitle: "DATA MANAGEMENT",
     bgGradient: "from-green-500 to-teal-600",
   },
-  "الأمن السيبراني": {
+  {
     title: "مسار الأمن السيبراني",
     description:
       "احصل على المهارات الأساسية لحماية الأنظمة والبيانات من الهجمات الإلكترونية",
@@ -47,7 +60,7 @@ const categoryContent = {
     englishTitle: "CYBERSECURITY",
     bgGradient: "from-red-500 to-pink-600",
   },
-  "تطوير الويب": {
+  {
     title: "مسار تطوير الويب",
     description: "ابدأ في بناء مواقع ويب ديناميكية باستخدام أحدث التقنيات",
     image:
@@ -55,78 +68,123 @@ const categoryContent = {
     englishTitle: "WEB DEVELOPMENT",
     bgGradient: "from-orange-500 to-red-600",
   },
-};
+  {
+    title: "تجربة",
+    description: "ابدأ في بناء مواقع ويب ديناميكية باستخدام أحدث التقنيات",
+    image:
+      "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
+    englishTitle: "WEB DEVELOPMENT",
+    bgGradient: "from-orange-500 to-red-600",
+  },
+  {
+    title: "تجربة",
+    description: "ابدأ في بناء مواقع ويب ديناميكية باستخدام أحدث التقنيات",
+    image:
+      "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
+    englishTitle: "WEB DEVELOPMENT",
+    bgGradient: "from-orange-500 to-red-600",
+  },
+  {
+    title: "تجربة",
+    description: "ابدأ في بناء مواقع ويب ديناميكية باستخدام أحدث التقنيات",
+    image:
+      "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
+    englishTitle: "WEB DEVELOPMENT",
+    bgGradient: "from-orange-500 to-red-600",
+  },
+]
 
 export default function ResponsiveDataPathSlider() {
-  const [activeCategory, setActiveCategory] = useState(categories[1]); // Start with Data Analysis
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const initialCategoryIndex = 0; // Start with Data Analysis
+  const [activeCategory, setActiveCategory] = useState(initialCategoryIndex);
+  const [currentIndex, setCurrentIndex] = useState(initialCategoryIndex);
+  const swiperRef = useRef(null);
 
-  const handlePrevious = () => {
-    const newIndex =
-      currentIndex > 0 ? currentIndex - 1 : categories.length - 1;
-    setCurrentIndex(newIndex);
-    setActiveCategory(categories[newIndex]);
-  };
-
-  const handleNext = () => {
-    const newIndex =
-      currentIndex < categories.length - 1 ? currentIndex + 1 : 0;
-    setCurrentIndex(newIndex);
-    setActiveCategory(categories[newIndex]);
+  const handleCategoryClick = (index) => {
+    setCurrentIndex(index);
+    setActiveCategory(index);
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(index);
+    }
   };
 
   const currentContent = categoryContent[activeCategory];
 
   return (
     <section className="bg-gradient-to-r from-[#23a0d01a] to-[#3CBEB31A] relative! overflow-hidden! flex! items-center! justify-center! ">
-      {/* Background Pattern */}
+      {/* Background Pattern (remains the same) */}
       <div className="absolute! inset-0! opacity-5!">
-        <div className="absolute! top-20! left-20! w-3!2 h-32! bg-blue-500! rounded-full! blur-3xl!"></div>
-        <div className="absolute! bottom-20! right-20! w-40 h-40! bg-teal-500! rounded-full! blur-3xl!"></div>
+        <div className="absolute! top-20! left-20! w-32! h-32! bg-blue-500! rounded-full! blur-3xl!"></div>
+        <div className="absolute! bottom-20! right-20! w-40! h-40! bg-teal-500! rounded-full! blur-3xl!"></div>
         <div className="absolute! top-1/2! left-1/3! w-24! h-24! bg-purple-500! rounded-full! blur-2xl!"></div>
       </div>
       <div className="container">
         <div className="flex! flex-col! items-center! justify-center! py-4! sm:py-6!">
-          {/* Navigation Categories - Hidden on mobile */}
-          <div className="flex-shrink-0! px-4! sm:mt-8! mt-6! mb-6! sm:mb-8! hidden md:block!">
+          {/* category slider start - MODIFIED SECTION */}
+          <div className="flex-shrink-0! w-full! px-4! sm:mt-8! mt-6! mb-6! sm:mb-8! hidden md:block!">
             <div className="max-w-7xl! mx-auto!">
               <div className="flex! items-center! justify-center! relative!">
-                {/* Left Arrow - Hidden on mobile */}
+                {/* Left Arrow (Previous) - Swiper Controlled */}
                 <button
-                  onClick={handleNext}
-                  className="partners-next! absolute! cursor-pointer left-0! top-1/2! -translate-y-1/2! z-10! w-0! h-0! border-t-[15px]! border-b-[15px]! border-r-[20px]! border-t-transparent! border-b-transparent! border-r-blue-900! hover:border-r-blue-700! transition-colors! duration-300!"
+                  className="category-swiper-prev! absolute! cursor-pointer left-0! top-1/2! -translate-y-1/2! z-10! w-0! h-0! border-t-[15px]! border-b-[15px]! border-r-[20px]! border-t-transparent! border-b-transparent! border-r-blue-900! hover:border-r-blue-700! transition-colors! duration-300!"
+                  onClick={()=>{handleCategoryClick(activeCategory+1 > categories.length-1 ? categories.length-1 : activeCategory+1)}
+                }
                 ></button>
 
-                {/* Category Pills with المزيد button */}
-                <div className="flex! gap-4! sm:gap-6! max-w-full! px-12! sm:px-16! md:px-20! items-center!">
+                <Swiper
+                  ref={swiperRef}
+                  modules={[Navigation, A11y]}
+                  slidesPerView="auto"
+                  spaceBetween={16} // Corresponds to gap-4. Adjust sm:gap-6 via breakpoints if needed.
+                  // grabCursor={true}
+                  initialSlide={initialCategoryIndex}
+                  navigation={{
+                    prevEl: '.category-swiper-prev',
+                    nextEl: '.category-swiper-next',
+                  }}
+                  onSlideChange={(swiper) => {
+                    setCurrentIndex(swiper.activeIndex);
+                    setActiveCategory(swiper.activeIndex);
+                  }}
+                  className="max-w-full! px-12! sm:px-16! md:px-20!" // Keep padding for arrow spacing
+                  breakpoints={{
+                    // Example: adjust spaceBetween for sm screens if desired
+                    640: { // sm breakpoint
+                      spaceBetween: 24, // Corresponds to sm:gap-6
+                    },
+                  }}
+                >
                   {categories.map((category, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setActiveCategory(category);
-                        setCurrentIndex(index);
-                      }}
-                      className={`flex-shrink-0! cursor-pointer px-6! sm:px-8! py-2! sm:py-3! rounded-full! text-sm! sm:text-base! font-medium! transition-all! duration-300! whitespace-nowrap! border! border-slate-300! ${
-                        activeCategory === category
-                          ? "bg-[#202C5B]! text-white! shadow-lg! scale-105! border-blue-900!"
-                          : "bg-white/80! backdrop-blur-sm! text-slate-700! hover:border-blue-400! hover:text-blue-900! hover:bg-white! hover:shadow-sm!"
-                      }`}
-                    >
-                      {category}
-                    </button>
+                    <SwiperSlide key={index} className="!w-fit py-2!"> {/* !w-auto is crucial for pill widths */}
+                      <button
+                        onClick={() => handleCategoryClick(index)}
+                        className={`flex-shrink-0! cursor-pointer px-6! sm:px-8! py-2! sm:py-3! rounded-full! text-sm! sm:text-base! font-medium! transition-all! duration-300! whitespace-nowrap! border! border-slate-300! ${
+                          activeCategory === index
+                            ? "bg-[#202C5B]! text-white! shadow-lg! scale-105! border-blue-900!"
+                            : "bg-white/80! backdrop-blur-sm! text-slate-700! hover:border-blue-400! hover:text-blue-900! hover:bg-white! hover:shadow-sm!"
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    </SwiperSlide>
                   ))}
-                </div>
+                </Swiper>
 
-                {/* Right Arrow - Hidden on mobile */}
+                {/* Right Arrow (Next) - Swiper Controlled */}
                 <button
-                  onClick={handlePrevious}
-                  className="partners-prev! cursor-pointer absolute! right-0! top-1/2! -translate-y-1/2! z-10! w-0! h-0! border-t-[15px]! border-b-[15px]! border-l-[20px]! border-t-transparent! border-b-transparent! border-l-blue-900! hover:border-l-blue-700! transition-colors! duration-300!"
+                  className="category-swiper-next! absolute! cursor-pointer right-0! top-1/2! -translate-y-1/2! z-10! w-0! h-0! border-t-[15px]! border-b-[15px]! border-l-[20px]! border-t-transparent! border-b-transparent! border-l-blue-900! hover:border-l-blue-700! transition-colors! duration-300!"
+                  onClick={
+                    ()=>{
+                      handleCategoryClick(activeCategory-1 < 0 ? 0 : activeCategory-1)
+                    }
+                  }
                 ></button>
               </div>
             </div>
           </div>
+          {/* category slider end */}
 
-          {/* Main Content */}
+          {/* Main Content (remains the same) */}
           <div className="flex-1! px-4! sm:px-6! lg:px-8! flex! items-center justify-between w-full!">
             <div className="max-w-7xl! w-full! mx-auto! h-full! rounded-2xl! overflow-hidden!">
               <div
@@ -135,7 +193,6 @@ export default function ResponsiveDataPathSlider() {
               >
                 {/* Image Section - Always Left */}
                 <div className="order-1! lg:order-1! flex! flex-col! items-center! justify-center! w-full! lg:w-1/2! p-4! lg:p-8!">
-                  {/* المزيد Button for mobile/tablet above image */}
                   <div className="rounded-2xl!  border-[1px]! border-transparent! bg-gradient-to-br! from-cyan-400! to-emerald-400! p-0.5!">
                     <div className="bg-white! rounded-2xl! overflow-hidden!">
                       <img
@@ -147,14 +204,11 @@ export default function ResponsiveDataPathSlider() {
                   </div>
                   {/* Pagination Dots Below Image */}
                   <div className="flex-shrink-0 pt-4 sm:pt-6 pb-2 w-full!">
-                    <div className="flex! justify-center! gap-2!">
+                    <div className="flex! justify-center! gap-2! flex-row-reverse">
                       {categories.map((_, index) => (
                         <button
                           key={index}
-                          onClick={() => {
-                            setCurrentIndex(index);
-                            setActiveCategory(categories[index]);
-                          }}
+                          onClick={() => handleCategoryClick(index)} // Also syncs with main content
                           className={`h-2! rounded-full! cursor-pointer transition-all! duration-300! ${
                             index === currentIndex
                               ? "bg-teal-500! w-6! sm:w-8!"
@@ -187,7 +241,7 @@ export default function ResponsiveDataPathSlider() {
           </div>
         </div>
 
-        {/* Custom scrollbar hiding */}
+        {/* Custom scrollbar hiding (remains the same) */}
         <style jsx>{`
           .scrollbar-hide {
             -ms-overflow-style: none;

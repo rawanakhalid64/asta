@@ -33,7 +33,7 @@ export default function Navbar() {
       {/* Top bar with contact info - Desktop only */}
       <div className="bg-gradient-to-r from-blue-900 via-blue-700 via-cyan-400 via-teal-400 to-emerald-400 text-white">
         <div className="h-[40px] px-4 lg:px-8">
-          <div className="h-full">
+          <div className="h-full container">
             <div className="flex items-center justify-between h-full max-md:hidden">
               <div className="font-medium font-GE md:text-sm lg:text-lg text-[16px]">
                 أكاديمية المهارات التطبيقية للتدريب
