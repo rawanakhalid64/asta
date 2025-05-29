@@ -56,7 +56,7 @@ const PopularCoursesSection = () => {
         </div>
       </div>
       <div className="flex justify-center mt-8 md:hidden">
-        <button className="bg-[#202C5B]! text-white! py-[12px] rounded-3xl! md:w-[240px] w-[138px] hover:bg-blue-900! transition-colors! cursor-pointer! font-bold!">
+        <button className="bg-[#202C5B]! text-white! md:py-[12px] py-[6px] rounded-3xl! text-[10px] md:w-[240px] w-[138px] hover:bg-blue-900! transition-colors! cursor-pointer! font-bold!">
           المزيد
         </button>
       </div>

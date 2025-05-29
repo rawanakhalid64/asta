@@ -146,8 +146,8 @@ const TestimonialsSection = () => {
       <div
         className="absolute! inset-0! opacity-30!"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M40 40l20-20v40l-20-20zm0 0l-20 20v-40l20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: "80px 80px",
+          backgroundImage: `url('./images/banner/Testmonials.png')`,
+          backgroundSize: "cover",
         }}
       />
 
@@ -210,7 +210,7 @@ const TestimonialsSection = () => {
                     {" "}
                     {/* Apply z-index when active for stacking */}
                     <div
-                      className={`bg-white! rounded-3xl! px-[8px] py-[16px] md:aspect-[328/384] shadow-lg! border! border-gray-200! relative! flex! flex-col! hover:shadow-xl! transition-all! duration-300! ${
+                      className={`bg-white! rounded-3xl! px-[8px] py-[16px] md:aspect-[328/384] relative! flex! flex-col! transition-all! duration-300! ${
                         // Adjusted width for responsiveness
                         isActive
                           ? "transform! scale-100!"
@@ -256,15 +256,7 @@ const TestimonialsSection = () => {
                       </div>
 
                       {/* Speech Bubble Tail */}
-                      <div className="absolute! -bottom-4! left-1/2! transform! -translate-x-1/2!">
-                        <div
-                          className="w-0! h-0!"
-                          style={{
-                            borderLeft: "20px solid transparent!",
-                            borderRight: "20px solid transparent!",
-                            borderTop: "20px solid white!",
-                          }}
-                        ></div>
+                      <div className="absolute bottom-[1px] left-1/2! transform! -translate-x-1/2 translate-y-full border-[12px] border-t-[white] border-b-[transparent] border-x-[transparent]">
                       </div>
                     </div>
                   </div>

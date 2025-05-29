@@ -136,14 +136,6 @@ export default function ResponsiveDataPathSlider() {
                 {/* Image Section - Always Left */}
                 <div className="order-1! lg:order-1! flex! flex-col! items-center! justify-center! w-full! lg:w-1/2! p-4! lg:p-8!">
                   {/* المزيد Button for mobile/tablet above image */}
-                  <div className="block! lg:hidden! w-full! justify-end! mb-2!">
-                    <button
-                      className="bg-[#202C5B]! cursor-pointer text-white! rounded-full! px-6! py-2! font-medium! shadow-md! transition! hover:bg-[#1a1a40]!"
-                      onClick={handleNext}
-                    >
-                      المزيد
-                    </button>
-                  </div>
                   <div className="rounded-2xl!  border-[1px]! border-transparent! bg-gradient-to-br! from-cyan-400! to-emerald-400! p-0.5!">
                     <div className="bg-white! rounded-2xl! overflow-hidden!">
                       <img
@@ -181,12 +173,17 @@ export default function ResponsiveDataPathSlider() {
                   <p className="text-base! md:text-lg! text-teal-500! leading-relaxed! mb-8! max-w-xl!">
                     {currentContent.description}
                   </p>
-                  <button className="px-10! py-4! cursor-pointer rounded-full! text-white! text-lg! font-semibold! bg-gradient-to-r! from-cyan-500! to-emerald-400! focus:outline-none! shadow-md! transition! hover:opacity-90! min-w-[220px]!">
+                  <button className="md:py-4 py-[8px] cursor-pointer rounded-full! text-white! font-semibold! bg-gradient-to-r! from-cyan-500! to-emerald-400! focus:outline-none! shadow-md! transition! hover:opacity-90! md:w-[240px] w-[138px] max-md:text-[10px]">
                     استعراض المسارات
                   </button>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="md:hidden w-full! justify-center mb-2! flex">
+            <button className="bg-[#202C5B]! text-white! md:py-[12px] py-[6px] rounded-3xl! text-[10px] md:w-[240px] w-[138px] hover:bg-blue-900! transition-colors! cursor-pointer! font-bold!">
+              المزيد
+            </button>
           </div>
         </div>
 

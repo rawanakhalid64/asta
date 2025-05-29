@@ -28,7 +28,7 @@ export default function Hero() {
               />
             </div>
             <div className="flex! flex-col! sm:flex-row! gap-4! w-full! justify-center! md:justify-start! items-center!">
-              <button className="px-14! py-3! rounded-full! text-white! text-base! font-medium! bg-gradient-to-r! from-cyan-500! to-emerald-400! focus:outline-none! shadow-md! transition! hover:opacity-90! min-w-[160px]!">
+              <button className="w-[138px] md:w-[180px] lg:2-[240px] py-3! rounded-full! text-white! text-base! font-medium! bg-gradient-to-r! from-cyan-500! to-emerald-400! focus:outline-none! shadow-md! transition! hover:opacity-90! min-w-[160px]!">
                 اشترك الآن مجانا
               </button>
               <button className="px-8! py-3! rounded-full! text-white! text-base! font-medium! bg-[#1A2555]! focus:outline-none! shadow-md! transition! hover:opacity-90! min-w-[160px]!">

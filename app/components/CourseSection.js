@@ -68,26 +68,28 @@ const CourseSection = () => {
       <div className="w-full! mx-auto!">
         {/* Tabs Header Container with Gradient */}
 
-        <div className="w-full! bg-gradient-to-r! from-[#23A0D0]! to-[#3CBEB3]! pt-[32px] mb-0! relative! overflow-auto scrollbar-hidden">
+        <div className="w-full! bg-gradient-to-r from-[#23A0D0] to-[#3CBEB3] pt-[32px] mb-0!">
           {/* Tabs Bar */}
           {/* Tabs should be right-aligned, evenly spaced, non-scrolling, and stick to bottom */}
           {/* Added items-end to make tabs stick to bottom */}
           {/* Changed justify-end to justify-center */}
-          <div className="container flex! justify-center! gap-4! items-end! w-max">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleTabChange(cat)}
-                // Updated border classes and colors, added translate effect, removed bottom border
-                className={`whitespace-nowrap px-6 py-2 rounded-t-lg rounded-b-none border-t border-l border-r font-bold! text-base! transition-all! duration-200! relative! ${
-                  activeCategory === cat
-                    ? "bg-white! border-gray-400! text-[#202C5B]! shadow-sm! z-10 transform! pb-[16px] md:pb-[20px] border-b-0!"
-                    : "bg-transparent! border-gray-300! text-white! hover:bg-white! hover:bg-opacity-10! hover:translate-y-[-4px]! md:hover:translate-y-[-6px]! border-b-0!"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="container relative! overflow-auto scrollbar-hidden">
+            <div className="flex! justify-center! gap-4! items-end! w-max mx-auto">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => handleTabChange(cat)}
+                  // Updated border classes and colors, added translate effect, removed bottom border
+                  className={`whitespace-nowrap px-6 py-2 rounded-t-lg rounded-b-none border-t border-l border-r font-bold! text-base! transition-all! duration-200! relative! ${
+                    activeCategory === cat
+                      ? "bg-white! border-gray-400! text-[#202C5B]! shadow-sm! z-10 transform! pb-[16px] md:pb-[20px] border-b-0!"
+                      : "bg-transparent! border-gray-300! text-white! hover:bg-white! hover:bg-opacity-10! hover:translate-y-[-4px]! md:hover:translate-y-[-6px]! border-b-0!"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
           {/* Removed المزيد button and scrolling styles */}
         </div>
