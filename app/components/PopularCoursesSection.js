@@ -14,7 +14,7 @@ const PopularCoursesSection = () => {
       provider: "Microsoft Corp.",
       rating: 4.2,
       price: "250 ج.م",
-      image: "v1234567890/courses/data-analysis-1"
+      image: "/images/cr.png"
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const PopularCoursesSection = () => {
       provider: "Microsoft Corp.",
       rating: 4.2,
       price: "250 ج.م",
-      image: "v1234567890/courses/data-analysis-2"
+      image: "/images/cr.png"
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const PopularCoursesSection = () => {
       provider: "Microsoft Corp.",
       rating: 4.2,
       price: "250 ج.م",
-      image: "v1234567890/courses/data-analysis-3"
+      image: "/images/cr.png"
     }
   ];
 
@@ -50,83 +50,61 @@ const PopularCoursesSection = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br! from-slate-50! to-blue-50! py-16! px-4! sm:px-6! lg:px-8! min-h-screen! flex! items-center! justify-center!">
-      <div className="max-w-7xl! w-full! mx-auto! ">
+    <div className="bg-gradient-to-br! from-slate-50! to-blue-50! py-8! px-0! sm:px-6! lg:px-8! min-h-screen! flex! items-center! justify-center!">
+      <div className="max-w-7xl! w-full! mx-auto! px-2! sm:px-0!">
         {/* Header */}
-        <div className="flex! flex-col! sm:flex-row! justify-between! items-center! mb-12! text-center! sm:text-right! px-4! sm:px-0!">
-          <h2 className="text-3xl! md:text-4xl! lg:text-5xl! font-bold! text-gray-800! mb-4! sm:mb-0!">
-            الدورات الأكثر شيوعاً
-          </h2>
-          <button className="bg-slate-700! hover:bg-slate-800! text-white! px-6! py-3! rounded-full! font-medium! transition-colors! duration-200!">
+        <div className="flex! flex-col! items-center! text-center! gap-4! px-2! sm:px-8! md:px-16! mb-8! md:flex-row-reverse! md:justify-between! md:items-center! md:text-right! md:gap-0!">
+          <button className="bg-slate-700! hover:bg-slate-800! text-white! px-6! py-3! rounded-full! font-medium! transition-colors! duration-200! mt-4! md:mt-0!">
             عرض الكل
           </button>
+          <h2 className="text-2xl! sm:text-3xl! md:text-4xl! lg:text-5xl! font-bold! text-gray-800!">
+            الدورات الأكثر شيوعاً
+          </h2>
         </div>
 
         {/* Courses Grid */}
-        <div className="grid! grid-cols-1! sm:grid-cols-2! lg:grid-cols-3! gap-8! px-4! sm:px-0!">
-          {courses.map((course) => (
+        <div className="grid! w-full! grid-cols-1! sm:grid-cols-2! lg:grid-cols-3! gap-1! px-0! sm:px-2!">
+          {courses.map((course, idx) => (
             <div
               key={course.id}
-              className="bg-white! rounded-2xl! shadow-lg! hover:shadow-xl! transition-all! duration-300! transform! hover:-translate-y-2! overflow-hidden!"
+              className="bg-white! rounded-2xl! border! border-cyan-300! hover:shadow-xl! transition-all! duration-300! relative! overflow-visible! w-full! sm:max-w-xs! md:max-w-md! lg:w-[400px]! mx-0! sm:mx-auto!"
             >
-              {/* Course Image with Overlay Icons */}
-              <div className="relative! h-48! overflow-hidden!">
-                {/* Cloudinary Image */}
-                <Image
-                  src={`https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/w_800,h_400,c_fill/${course.image}`}
-                  alt={course.title}
-                  fill
-                  className="object-cover!"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={course.id === 1}
-                />
-                
-                {/* Overlay with Icons */}
-                <div className="absolute! inset-0! bg-black/20! flex! items-center! justify-center!">
-                  <div className="flex! gap-4!">
-                    <Search className="w-6! h-6! text-white!" />
-                    <Cloud className="w-6! h-6! text-white!" />
-                    <Eye className="w-6! h-6! text-white!" />
-                  </div>
+              {/* Course Image */}
+              <div className="flex! items-center! justify-center! pt-4! px-4!">
+                <div className="rounded-xl! overflow-hidden! border! border-cyan-200! w-full!">
+                  <img
+                    src="/images/cr.png"
+                    alt={course.title}
+                    className="object-cover! w-full! h-40!"
+                  />
                 </div>
               </div>
 
               {/* Course Content */}
-              <div className="p-6! flex! flex-col! items-center! text-center!">
+              <div className="p-6! flex! flex-col! items-center! text-center! relative!">
                 {/* Provider */}
-                <div className="border! border-blue-300! rounded-full! px-4! py-1! mb-4!">
-                  <span className="text-sm! text-gray-800! font-bold!">
-                    {course.provider}
-                  </span>
+                <div className="border! border-cyan-300! rounded-full! px-4! py-2! mb-4! flex! items-center! gap-2! bg-white! w-full! justify-center!">
+                  <span className="text-md! text-gray-800! font-medium!">{course.provider}</span>
+                  <img src="/images/icons/micro.svg" alt="Microsoft Logo" className="w-5! h-5!" />
                 </div>
-
                 {/* Course Title */}
-                <h3 className="text-xl! font-bold! text-gray-800! mb-4! text-right! w-full!">
-                  {course.title}
-                </h3>
-
-                <hr className="w-full! border-gray-300! mb-4!" />
-
-                {/* Rating and Price */}
-                <div className="flex! items-center! justify-between! w-full! mb-6!">
-                  {/* Rating */}
-                  <div className="flex! items-center! gap-1!">
-                    <span className="text-lg! font-bold! text-gray-800!">
-                      {course.rating}
-                    </span>
+                <h3 className="text-2xl! font-bold! text-black! mb-2! w-full! text-right!">{course.title}</h3>
+                <hr className="w-full! border-cyan-200! mb-4!" />
+                {/* Reviews and Price Centered */}
+                <div className="flex! flex-col! items-center! justify-center! mb-4!">
+                  <div className="flex! items-center! gap-2! mb-2!">
+                    <span className="text-base! font-bold! text-gray-800!">{course.rating}</span>
                     <div className="flex! items-center! gap-1!">
-                      {renderStars(course.rating)}
+                      {[...Array(4)].map((_, i) => (
+                        <svg key={i} className="w-5! h-5! text-yellow-400!" fill="currentColor" viewBox="0 0 20 20"><polygon points="9.9,1.1 7.6,6.6 1.6,7.6 6,11.9 4.9,17.9 9.9,14.9 14.9,17.9 13.8,11.9 18.2,7.6 12.2,6.6 "/></svg>
+                      ))}
+                      <svg className="w-5! h-5! text-gray-300!" fill="currentColor" viewBox="0 0 20 20"><polygon points="9.9,1.1 7.6,6.6 1.6,7.6 6,11.9 4.9,17.9 9.9,14.9 14.9,17.9 13.8,11.9 18.2,7.6 12.2,6.6 "/></svg>
                     </div>
                   </div>
-
-                  {/* Price */}
-                  <div className="text-lg! font-bold! text-gray-800!">
-                    {course.price}
-                  </div>
+                  <div className="text-xl! font-bold! text-black!">{course.price} ريال</div>
                 </div>
-
                 {/* CTA Button */}
-                <button className="w-[152px]! bg-gradient-to-r! from-cyan-500! to-blue-500! hover:from-cyan-600! hover:to-blue-600! text-white! py-3! px-6! rounded-full! font-medium! transition-colors! duration-200!">
+                <button className="w-full! bg-gradient-to-r! from-cyan-500! to-emerald-400! hover:from-cyan-600! hover:to-emerald-500! text-white! py-3! px-6! rounded-full! font-medium! transition-colors! duration-200! mb-2!">
                   تصفح الدورات
                 </button>
               </div>

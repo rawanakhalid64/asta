@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-:root {
 
-}
 
 @theme {
   --breakpoint-*: initial;
@@ -30,3 +28,27 @@
 input:focus-within{
   outline: unset;
 }
+
+/* Arabic Font - GE Dinar */
+
+
+
+@font-face {
+  font-family: 'GE ';
+  src: url('/fonts/arabic/GE_DINAR_Font/GE_Dinar_Two_Light.otf') format('opentype');
+ 
+  font-style: normal;
+  font-display: swap;
+}
+
+/* English Font - Poppins */
+@font-face {
+  font-family: 'optima';
+  src: url('/fonts/english/OPTIMA.TTF') format('truetype');
+  
+  font-style: normal;
+  font-display: swap;
+}
+
+
+

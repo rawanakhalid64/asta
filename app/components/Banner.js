@@ -33,7 +33,7 @@ export default function PartnersBanner() {
         <div className="relative w-[70%] mx-auto!">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={24} 
+            spaceBetween={8} 
             slidesPerView={3}
             loop={true}
             autoplay={{

@@ -1,251 +1,176 @@
 'use client';
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star } from 'lucide-react';
+import Image from 'next/image';
+
+const categories = [
+  'الدرجات الاكاديمية',
+  'الدورات المضافة حديثاً',
+  'الدورات الاعلى تقييماً',
+  'أفضل الدورات المجانية',
+];
 
 const CourseSection = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const tabs = [
-    'الدرجات الاكاديمية',
-    'الدورات المتقدمة حديثاً',
-    'الدورات الاعلى تقييماً',
-    'أفضل الدورات المجانية'
-  ];
-
-  // Different course data for each category
+  // Dummy data structure updated to match screenshot needs and provide more items
   const coursesByCategory = {
-    0: [ // الدرجات الاكاديمية
-      {
-        id: 1,
-        title: 'بكالوريوس إدارة الأعمال',
-        level: 'متقدم',
-        provider: 'جامعة الملك سعود 🏛️',
-        rating: 4.8,
-        price: '1500 ر.س',
-        category: 0
-      },
-      {
-        id: 2,
-        title: 'ماجستير الهندسة',
-        level: 'متقدم',
-        provider: 'جامعة القاهرة 🏛️',
-        rating: 4.7,
-        price: '2000 ر.س',
-        category: 0
-      },
-      {
-        id: 3,
-        title: 'دبلوم التسويق',
-        level: 'متوسط',
-        provider: 'الجامعة الأمريكية 🏛️',
-        rating: 4.5,
-        price: '800 ر.س',
-        category: 0
-      }
-    ],
-    1: [ // الدورات المتقدمة حديثاً
-      {
-        id: 4,
-        title: 'الذكاء الاصطناعي',
-        level: 'متقدم',
-        provider: 'Google 🏢',
-        rating: 4.9,
-        price: '400 ر.س',
-        category: 1
-      },
-      {
-        id: 5,
-        title: 'البلوك تشين',
-        level: 'متقدم',
-        provider: 'IBM 🏢',
-        rating: 4.6,
-        price: '350 ر.س',
-        category: 1
-      },
-      {
-        id: 6,
-        title: 'الأمن السيبراني',
-        level: 'متوسط',
-        provider: 'Cisco 🏢',
-        rating: 4.4,
-        price: '300 ر.س',
-        category: 1
-      }
-    ],
-    2: [ // الدورات الاعلى تقييماً
-      {
-        id: 7,
-        title: 'تحليل البيانات',
-        level: 'متوسط',
-        provider: 'Microsoft Corp 🏢',
-        rating: 4.9,
-        price: '250 ر.س',
-        category: 2
-      },
-      {
-        id: 8,
-        title: 'البرمجة بـ Python',
-        level: 'مبتدئ',
-        provider: 'Meta 🏢',
-        rating: 4.8,
-        price: '200 ر.س',
-        category: 2
-      },
-      {
-        id: 9,
-        title: 'تطوير المواقع',
-        level: 'متوسط',
-        provider: 'Amazon 🏢',
-        rating: 4.7,
-        price: '300 ر.س',
-        category: 2
-      }
-    ],
-    3: [ // أفضل الدورات المجانية
-      {
-        id: 10,
-        title: 'مقدمة في البرمجة',
-        level: 'مبتدئ',
-        provider: 'freeCodeCamp 🆓',
-        rating: 4.3,
-        price: 'مجاني',
-        category: 3
-      },
-      {
-        id: 11,
-        title: 'أساسيات التسويق',
-        level: 'مبتدئ',
-        provider: 'Coursera 🆓',
-        rating: 4.1,
-        price: 'مجاني',
-        category: 3
-      },
-      {
-        id: 12,
-        title: 'التصميم الجرافيكي',
-        level: 'مبتدئ',
-        provider: 'Khan Academy 🆓',
-        rating: 4.0,
-        price: 'مجاني',
-        category: 3
-      }
-    ]
+    'الدرجات الاكاديمية': Array.from({ length: 6 }, (_, i) => ({
+      id: i + 1,
+      title: 'تحليل البيانات',
+      subtitle: 'ماجستير',
+      provider: 'Microsoft Corp.',
+      rating: 4.2,
+      price: '250',
+      image: "/images/cr.png"
+    })),
+    'الدورات المتقدمة حديثاً': Array.from({ length: 6 }, (_, i) => ({
+      id: i + 7,
+      title: 'الذكاء الاصطناعي',
+      subtitle: 'متقدم',
+      provider: 'Google',
+      rating: 4.9,
+      price: '400',
+      image: "/images/cr.png"
+    })),
+    'الدورات الاعلى تقييماً': Array.from({ length: 6 }, (_, i) => ({
+      id: i + 13,
+      title: 'البرمجة بـ Python',
+      subtitle: 'مبتدئ',
+      provider: 'Meta',
+      rating: 4.8,
+      price: '200',
+      image: "/images/cr.png"
+    })),
+    'أفضل الدورات المجانية': Array.from({ length: 6 }, (_, i) => ({
+      id: i + 19,
+      title: 'مقدمة في البرمجة',
+      subtitle: 'مجاني',
+      provider: 'freeCodeCamp',
+      rating: 4.3,
+      price: '0',
+      image: "/images/cr.png"
+    })),
   };
 
   const getCurrentCourses = () => {
-    return coursesByCategory[activeTab] || [];
+    // Return courses for the active category, or empty array if not found
+    return coursesByCategory[activeCategory] || [];
   };
 
-  const handleTabChange = (index) => {
-    setActiveTab(index);
-    setCurrentSlide(0); // Reset slide when changing tabs
+  const handleTabChange = (categoryName) => {
+    setActiveCategory(categoryName);
   };
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        size={14}
         className={`w-4! h-4! ${
-          i < Math.floor(rating) 
-            ? 'fill-yellow-400! text-yellow-400!' 
-            : 'text-gray-300!'
+          i < Math.floor(rating)
+            ? 'fill-yellow-400! text-yellow-400!'
+            : i < rating
+            ? 'fill-yellow-400/50! text-yellow-400!'
+            : 'fill-gray-200! text-gray-200!'
         }`}
       />
     ));
   };
 
   return (
-    <div className="w-full! max-w-7xl! mx-auto! p-6!" dir="rtl">
-      {/* Navigation Header - Matching the design */}
-      <div className="bg-gradient-to-r! from-teal-400! to-cyan-400! rounded-lg! mb-8! p-1!">
-        <div className="flex!">
-          {tabs.map((tab, index) => (
-            <button
-              key={index}
-              onClick={() => handleTabChange(index)}
-              className={`flex-1! px-4! py-3! text-sm! font-medium! transition-all! duration-300! cursor-pointer! ${
-                index === 0 ? 'rounded-r-lg!' : 
-                index === tabs.length - 1 ? 'rounded-l-lg!' : ''
-              } ${
-                activeTab === index
-                  ? 'bg-white! text-gray-800! shadow-sm!'
-                  : 'text-white! hover:text-gray-900! hover:bg-white! hover:bg-opacity-10!'
-              }`}
-            >
-              {tab}
-            </button>
+    <div className="bg-gradient-to-br! from-slate-50! to-blue-50! py-8! px-0! sm:px-6! lg:px-8! min-h-screen! flex! flex-col! items-center! justify-center!">
+      <div className="max-w-7xl! w-full! mx-auto! px-2! sm:px-0!">
+        {/* Tabs Header Container with Gradient */}
+        <div className="w-full! bg-gradient-to-r! from-[#23A0D0]! to-[#3CBEB3]! py-4! pb-8! mb-0! relative!">
+          {/* Tabs Bar */}
+          {/* Tabs should be right-aligned, evenly spaced, non-scrolling, and stick to bottom */}
+          {/* Added items-end to make tabs stick to bottom */}
+          {/* Changed justify-end to justify-center */}
+          <div className="max-w-7xl! mx-auto! flex! justify-center! gap-4! px-2! sm:px-0! md:px-6! lg:px-8! items-end!">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => handleTabChange(cat)}
+                // Updated border classes and colors, added translate effect, removed bottom border
+                className={`whitespace-nowrap! px-6! py-2! rounded-t-lg! rounded-b-none! border-t! border-l! border-r! font-bold! text-base! transition-all! duration-200! relative! ${
+                  activeCategory === cat
+                    ? 'bg-white! border-gray-400! text-[#202C5B]! shadow-sm! z-10 transform! translate-y-[-8px]! md:translate-y-[-12px]! border-b-0!'
+                    : 'bg-transparent! border-gray-300! text-white! hover:bg-white! hover:bg-opacity-10! hover:translate-y-[-4px]! md:hover:translate-y-[-6px]! border-b-0!'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          {/* Removed المزيد button and scrolling styles */}
+        </div>
+
+        {/* Course Cards Container */}
+        {/* Removed negative margin-top to fix overlay issue */}
+        <div className="grid! w-full! grid-cols-1! sm:grid-cols-2! lg:grid-cols-3! gap-6! px-0! sm:px-2! mb-8! relative! z-0!">
+          {getCurrentCourses().map((course) => (
+            <div key={course.id} className="bg-white! rounded-2xl! border! border-cyan-300! hover:shadow-xl! transition-all! duration-300! relative! overflow-visible! w-full! max-w-full! sm:max-w-xs! md:max-w-sm! lg:max-w-none! xl:w-[400px]! mx-0! sm:mx-auto! p-4! flex flex-col">
+              {/* Course Image */}
+              <div className="flex! items-center! justify-center! mb-4!">
+                <div className="rounded-xl! overflow-hidden! border! border-cyan-200! w-full!">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="object-cover! w-full! h-40!"
+                  />
+                </div>
+              </div>
+
+              {/* Provider Pill */}
+              <div className="border! border-cyan-300! rounded-full! px-4! py-1! mb-4! flex! items-center! gap-2! bg-white! w-full! justify-center!" style={{minHeight:'40px'}}>
+                 <Image src="/images/icons/micro.svg" alt="Microsoft Logo" width={20} height={20} className="w-5! h-5!" />
+                <span className="text-sm! text-gray-800! font-bold!">{course.provider}</span>
+              </div>
+              {/* Course Title & Subtitle */}
+              <div className="w-full! text-right! mb-2!">
+                <h3 className="text-2xl! font-bold! text-black! mb-1!">{course.title}</h3>
+                <span className="text-cyan-500! text-base! font-bold!">{course.subtitle}</span>
+              </div>
+              <hr className="w-full! border-cyan-200! my-4!" />
+              {/* Reviews and Price Centered */}
+              <div className="flex! flex-col! items-center! justify-center! mb-6! gap-1!">
+                <div className="flex! items-center! gap-2! mb-1!">
+                  <span className="text-base! font-bold! text-gray-800!">{course.rating}</span>
+                  <div className="flex! items-center! gap-1!">
+                    {renderStars(course.rating)}
+                  </div>
+                </div>
+                <div className="text-2xl! font-bold! text-black! flex! items-center! gap-1!">
+                  <span>{course.price}</span>
+                  <span className="text-lg! font-normal!">﷼</span>
+                </div>
+              </div>
+              {/* CTA Button */}
+              <button className="w-full! bg-gradient-to-r! from-cyan-400! to-teal-400! hover:from-cyan-500! hover:to-teal-500! text-white! py-3! px-6! rounded-full! font-medium! transition-colors! duration-200! mt-auto!">
+                تصفح الدورات
+              </button>
+            </div>
           ))}
         </div>
-      </div>
 
-      {/* Course Cards Container */}
-      <div className="grid! grid-cols-1! md:grid-cols-2! lg:grid-cols-3! gap-6!">
-        {getCurrentCourses().map((course) => (
-          <div key={course.id} className="bg-white! rounded-lg! shadow-md! overflow-hidden! hover:shadow-lg! transition-shadow! duration-300!">
-            {/* Course Image */}
-            <div className="relative! h-48! bg-gradient-to-br! from-blue-500! to-blue-700!">
-              <div className="absolute! inset-0! flex! items-center! justify-center!">
-                <div className="text-white! text-center!">
-                  <div className="flex! items-center! justify-center! space-x-4! mb-4!">
-                    <div className="w-8! h-8! bg-white! bg-opacity-20! rounded-full! flex! items-center! justify-center!">
-                      <span className="text-sm!">@</span>
-                    </div>
-                    <div className="w-8! h-8! bg-white! bg-opacity-20! rounded-full! flex! items-center! justify-center!">
-                      <span className="text-sm!">○</span>
-                    </div>
-                  </div>
-                  <div className="text-xl! font-bold! mb-2!">DATA</div>
-                  <div className="text-sm!">ANALYSIS</div>
-                  <div className="flex! items-center! justify-center! mt-4! space-x-2!">
-                    <div className="w-6! h-6! bg-white! bg-opacity-20! rounded!">
-                      <svg className="w-full! h-full! p-1!" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                      </svg>
-                    </div>
-                    <div className="w-6! h-6! bg-white! bg-opacity-20! rounded!">
-                      <svg className="w-full! h-full! p-1!" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Course Content */}
-            <div className="p-4!">
-              <div className="text-xs! text-gray-500! mb-1!">{course.provider}</div>
-              <h3 className="font-bold! text-lg! mb-1!">{course.title}</h3>
-              <div className="text-sm! text-teal-500! mb-3!">{course.level}</div>
-              
-              {/* Rating */}
-              <div className="flex! items-center! gap-2! mb-4!">
-                <span className="text-sm! font-medium!">{course.rating}</span>
-                <div className="flex! gap-1!">
-                  {renderStars(course.rating)}
-                </div>
-              </div>
-
-              {/* Price and Button */}
-              <div className="flex! items-center! justify-between!">
-                <span className="text-lg! font-bold!">{course.price}</span>
-                <button className="bg-teal-500! text-white! px-4! py-2! rounded-lg! text-sm! hover:bg-teal-600! transition-colors! cursor-pointer!">
-                  تسجيل الدورة
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* View All Button */}
+      {/* View All Button - Matching the design */}
       <div className="flex! justify-center! mt-8!">
-        <button className="bg-blue-900! text-white! px-8! py-3! rounded-lg! hover:bg-blue-800! transition-colors! cursor-pointer!">
+        <button className="bg-[#202C5B]! text-white! px-8! py-3! rounded-lg! hover:bg-blue-900! transition-colors! cursor-pointer! font-bold!">
           تصفح الدورات
         </button>
       </div>
+
+      </div>
+      {/* Custom scrollbar hiding - No longer needed for tabs, but keep for potential other uses */}
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };
