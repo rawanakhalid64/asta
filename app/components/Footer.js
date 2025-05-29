@@ -103,11 +103,11 @@ const Footer = () => {
   return (
     <footer className="!bg-blue-50 !py-12 !px-6" dir="rtl">
       <div className="!max-w-7xl !mx-auto">
-        <div className="!grid !grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 !gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[16px]">
           {footerSections.map((section, index) => (
-            <div key={index} className="!text-center">
+            <div key={index}>
               {/* Title */}
-              <h3 className="!text-lg !font-bold !text-blue-600 !mb-4">
+              <h3 className="!text-lg !font-bold text-[#23A0D0] !mb-4">
                 {section.title}
               </h3>
               
@@ -124,7 +124,7 @@ const Footer = () => {
                   <li key={linkIndex}>
                     <Link
                       href={link.href}
-                      className="!text-gray-600 !text-sm hover:!text-blue-600 !transition-colors !duration-200 !block"
+                      className="!text-gray-600 !text-sm hover:text-[#23A0D0] !transition-colors !duration-200 !block"
                     >
                       {link.name}
                     </Link>

@@ -6,11 +6,11 @@ const Footer2 = () => {
       {/* Main Footer Content */}
       <div className="max-w-7xl! mx-auto!">
         {/* Footer Columns */}
-        <div className="grid! grid-cols-1! md:grid-cols-2! lg:grid-cols-4! gap-8! mb-12!">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[16px] mb-12!">
           
           {/* About Company Column */}
-          <div className="text-center! lg:text-right!">
-            <h3 className="text-lg! font-bold! text-gray-800! mb-4!">عن الشركة</h3>
+          <div className="">
+            <h3 className="text-lg! font-bold! text-[#23A0D0] mb-4!">عن الشركة</h3>
             <ul className="space-y-2!">
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">ملفي الشخصي</a></li>
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">دوراتي</a></li>
@@ -22,8 +22,8 @@ const Footer2 = () => {
           </div>
 
           {/* Contact Us Column */}
-          <div className="text-center! lg:text-right!">
-            <h3 className="text-lg! font-bold! text-gray-800! mb-4!">تواصل معنا</h3>
+          <div className="">
+            <h3 className="text-lg! font-bold! text-[#23A0D0] mb-4!">تواصل معنا</h3>
             <ul className="space-y-2!">
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">ملفي الشخصي</a></li>
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">دوراتي</a></li>
@@ -35,8 +35,8 @@ const Footer2 = () => {
           </div>
 
           {/* Students Column */}
-          <div className="text-center! lg:text-right!">
-            <h3 className="text-lg! font-bold! text-gray-800! mb-4!">الطلاب</h3>
+          <div className="">
+            <h3 className="text-lg! font-bold! text-[#23A0D0] mb-4!">الطلاب</h3>
             <ul className="space-y-2!">
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">ملفي الشخصي</a></li>
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">دوراتي</a></li>
@@ -48,8 +48,8 @@ const Footer2 = () => {
           </div>
 
           {/* Terms & Conditions Column */}
-          <div className="text-center! lg:text-right!">
-            <h3 className="text-lg! font-bold! text-gray-800! mb-4!">الشروط والأحكام</h3>
+          <div className="">
+            <h3 className="text-lg! font-bold! text-[#23A0D0] mb-4!">الشروط والأحكام</h3>
             <ul className="space-y-2!">
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">ملفي الشخصي</a></li>
               <li><a href="#!" className="text-gray-600! hover:text-teal-500! text-sm! block! transition-colors!">دوراتي</a></li>

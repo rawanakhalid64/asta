@@ -6,12 +6,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const images = [
-  '/images/banner/Group 104.png',
-  '/images/banner/Group 105.png',
-  '/images/banner/Group 106.png',
-  '/images/banner/Group 107.png',
-  '/images/banner/Group 108.png',
-  '/images/banner/Group 109.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
+  '/images/banner/Rectangle 19.png',
 ];
 
 export default function PartnersBanner() {
@@ -29,35 +36,39 @@ export default function PartnersBanner() {
         </h2>
       </div>
       
-      <div className="container mx-auto!">
-        <div className="relative w-[70%] mx-auto!">
+      <div className="container">
+        <div className="relative mx-auto!">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={8} 
-            slidesPerView={3}
+            spaceBetween={24}
+            slidesPerView={4}
             loop={true}
             autoplay={{
               delay: 0,
               disableOnInteraction: false,
             }}
-            speed={3000}
+            speed={4000}
             navigation={{
               nextEl: '.partners-next',
               prevEl: '.partners-prev',
             }}
             breakpoints={{
-              640: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
+              620:{
+                slidesPerView: 5,
+              },
+              768:{
+                slidesPerView: 6,
+              },
             }}
-            centeredSlides={true}
+            className='brand-linear'
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center justify-center h-24">
+                <div className="flex justify-center w-full p-[24px] aspect-square border-[1px] md:rounded-[30px] rounded-[12px]">
                   <img
                     src={image}
                     alt={`Partner ${index + 1}`}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-cover"
                   />
                 </div>
               </SwiperSlide>

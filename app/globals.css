@@ -10,7 +10,6 @@
   --breakpoint-lg: 991px;
   --breakpoint-xl: 1064px;
   --breakpoint-2xl: 1441px;
-  --breakpoint-3xl: 1600px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-dark: rgba(24, 24, 24, 1);
@@ -49,6 +48,10 @@ input:focus-within{
   font-style: normal;
   font-display: swap;
 }
+.scrollbar-hidden::-webkit-scrollbar{
+  display: none;
+}
 
-
-
+.brand-linear, .brand-linear .swiper-wrapper{
+  transition-timing-function: linear;
+}
