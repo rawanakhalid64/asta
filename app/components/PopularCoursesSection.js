@@ -38,7 +38,7 @@ const PopularCoursesSection = () => {
   return (
     <div className="bg-gradient-to-r from-[#23a0d01a] to-[#3CBEB31A] md:my-[64px] md:py-[64px] my-[24px] py-[24px]">
       <div className="container px-2! md:px-0!">
-        {/* Header */}
+      
         <div className="flex! flex-col! items-center! text-center! gap-4! px-2! sm:px-8! md:px-16! mb-8! md:flex-row-reverse! md:justify-between! md:items-center! md:text-right! md:gap-0!">
           <button className="bg-slate-700! max-md:hidden hover:bg-slate-800! text-white! px-6! py-3! rounded-full! font-medium! transition-colors! duration-200! mt-4! md:mt-0!">
             عرض الكل
@@ -48,7 +48,7 @@ const PopularCoursesSection = () => {
           </h2>
         </div>
 
-        {/* Courses Grid */}
+    
         <div className="grid! w-full! grid-cols-1! md:grid-cols-2! lg:grid-cols-3! gap-6 px-0! md:px-2!">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course}></CourseCard>

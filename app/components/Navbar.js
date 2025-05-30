@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full">
-      {/* Top bar with contact info - Desktop only */}
+    
       <div className="bg-gradient-to-r from-blue-900 via-blue-700 via-cyan-400 via-teal-400 to-emerald-400 text-white">
         <div className="h-[40px] px-4 lg:px-8">
           <div className="h-full container">

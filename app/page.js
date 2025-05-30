@@ -8,6 +8,7 @@ import CourseSection from "@/app/components/CourseSection";
 import TestimonialsSection from "@/app/components/TestimonialsSection";
 import Footer from "@/app/components/Footer";
 import Footer2 from "@/app/components/Footer2";
+import Join from "@/app/components/Join";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <PopularCoursesSection/>
         <CourseSection/>
         <TestimonialsSection/>
+        <Join/>
         <Footer/>
         <Footer2/>
       </main>
